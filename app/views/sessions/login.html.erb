@@ -1,0 +1,20 @@
+<div class="login">
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <br />
+  <%= f.text_field :username %>
+  <br />
+  <br />
+  <%= f.label :password %>
+  <br />
+  <%= f.password_field :password %>
+  <br />
+  <br />
+  <%= f.label "re-enter password" %>
+  <br />
+  <%= f.password_field :password_confirmation %>
+  <br />
+  <br />
+  <%= f.submit 'Login' %>
+  <% end %>
+</div>
