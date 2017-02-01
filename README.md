@@ -1,12 +1,19 @@
 plan:
 
+Sessions Controller
+new, create
+
+
 User -
-has_one_profile
+has_one :profile
+has_many :comments
 3 roles - User, moderator, admin
+
+
 
 user table to create
 username
-password
+password_digest
 password_verify
 
 no guest will have access since this is a private message board.
@@ -16,21 +23,26 @@ moderator can suspend a user.
 Admin can delete a User
 Admin can add or remove a moderator.
 
-
-Profile belongs to user
-Profile will contain:
-profile picture
-
-
+*********************************************
+Profile
+belongs_to user
+profile table to create:
+picture
+*********************************************
 Post -
 has_many_users
 has_many :comments, through => users
 
-post table to create
+posts table to create
+title
+content
 
-
-
-
+**********************************************
 Comments
 belongs_to :user
 belongs_to :post
+
+comments table to create
+user_id
+post_id
+content
