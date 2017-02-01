@@ -1,6 +1,6 @@
 plan:
 
-Sessions Controller
+Sessions Controller - started
 
 new, create
 
@@ -12,7 +12,7 @@ has_one :profile
 
 has_many :comments
 
-3 roles - User, moderator, admin
+3 roles - User = 0, moderator = 1, admin = 2
 
 
 
@@ -20,9 +20,9 @@ user table to create
 
 username
 
-password_digest
+password_digest - added to db/added bcrypt gem and has_secure_password in User model
 
-password_confirmation - not included in db. 
+password_confirmation - not included in db.
 
 
 no guest will have access since this is a private message board.
@@ -37,7 +37,7 @@ Admin can delete a User
 Admin can add or remove a moderator.
 
 *********************************************
-Profile
+Profile - started
 
 belongs_to user
 
