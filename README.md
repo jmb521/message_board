@@ -22,7 +22,7 @@ username
 
 password_digest
 
-password_verify
+password_confirmation - not included in db. 
 
 
 no guest will have access since this is a private message board.
