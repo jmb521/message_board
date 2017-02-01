@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :authorize, :logged_in?, :is_admin?, :is_moderator?
+
+  def home
+  end
+
   def current_user
+
     @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
 
   end
@@ -20,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def is_moderator?
     current_user.moderator
+  end
+
+  def set_user
+    @user = current_user
   end
 end
