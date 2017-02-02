@@ -1,5 +1,5 @@
-<%= @posts.each do |post| %>
-  <%= post.title %>
+<% @posts.each do |post| %>
+  <%= link_to(post.title, post_path(post.id)) %>
   <hr />
 
 <% end %>
