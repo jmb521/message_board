@@ -13,10 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   margin: 0;
+ }
 .login {
   height: 200px;
   width: 200px;
   margin: 0 auto;
   margin-top: 125px;
   background-color: #99ccff;
+}
+nav {
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  
+  background-color: blue;
 }
