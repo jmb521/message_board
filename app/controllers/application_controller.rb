@@ -30,4 +30,10 @@ class ApplicationController < ActionController::Base
   def set_user
     @user = current_user
   end
+
+  def authenticate_user
+    if !logged_in?
+      redirect_to root_path
+    end
+  end
 end
