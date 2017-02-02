@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
-
+before_action :authenticate_user
   def index
     @posts = Post.all
+  end
+
+  def show
+    @post = Post.find_by(id: params[:id])
   end
 
   def new
@@ -17,6 +21,7 @@ class PostsController < ApplicationController
       redirect_to new_post_path
     end
   end
+
 
 
   private

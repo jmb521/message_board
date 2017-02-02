@@ -1,0 +1,13 @@
+<%= @post.content %>
+<br />
+Comments:
+<%= @post.comments.each do |comment| %>
+<% if !comment.content.empty? %>
+  <%= comment.content %>
+  <% end %>
+
+  <br />
+  Written by: <%=comment.user %>
+<% end %>
+<%= link_to "Comment", new_comment_path %>
+<%= link_to "Edit", edit_comment_path %>
