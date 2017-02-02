@@ -1,8 +1,9 @@
 <%= form_for @comment do |f| %>
-<%= f.label :comment %>
+<%= f.label :content %>
 <br />
-<%= f.text_field :comment %>
-<%= f.hidden_field user_id: @user.id %>
+<%= f.text_field :content %>
+<%= f.hidden_field :user %>
+<%= f.hidden_field :post %>
 <br />
 <%= f.submit %>
 <% end %>
