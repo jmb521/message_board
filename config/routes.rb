@@ -5,10 +5,16 @@ Rails.application.routes.draw do
 
 
   delete "/logout", to: "sessions#destroy"
-  resources :comments
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :profiles
-  resources :users
+  resources :users do
+    resources :posts
+  end
+  get 'posts/:id/comments', to: 'posts#comments_index'
+  get 'posts/:id/comments/:comment_id', to: 'posts#comment'
+  post '/posts/:post_id/comments/new', to: 'comments#create'
   root 'application#home'
 
 

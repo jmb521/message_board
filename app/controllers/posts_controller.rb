@@ -9,8 +9,9 @@ before_action :authenticate_user
   end
 
   def new
-    @post = Post.new
 
+    @post = Post.new
+    
   end
 
   def create

@@ -1,29 +1,35 @@
 class CommentsController < ApplicationController
 
   def new
-    @comment = Comment.new
-    @user = User.find_by(id: params[:id])
+
+    @post_comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
+
+  end
+
+  def index
+    @post_comments = Comment.all
+
   end
 
   def create
-    @comment = Comment.new(comment_params)
-
-    if @comment.save
-      redirect_to post_path(@comment.post)
+    @post_comment = Comment.new(comment_params)
+    if @post_comment.save
+      redirect_to post_comments_path(@post_comment)
     else
       redirect_to posts_path, notice: "Your comment couldn't be saved"
     end
   end
 
   def edit
-    @comment = Comment.find_by(id: params[:id])
     binding.pry
+    @post_comment = Comment.find_by(id: params[:id])
+
   end
 
   def update
-    @comment = Comment.find_by(id: params[:id])
-    @comment.update(comment_params)
-    redirect_to post_path(@comment.post_id)
+    @post_comment = Comment.find_by(id: params[:id])
+    @post_comment.update(comment_params)
+    redirect_to post_path(@post_comment.post_id)
   end
 
   private
