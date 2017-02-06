@@ -1,13 +1,15 @@
 <%= @post.content %>
+<%= link_to "Comment", new_post_comment_path(@post) %>
 <br />
 Comments:
+<br />
 <% @post.comments.each do |comment| %>
 
+Written by: <%comment.user.username %> |
   <%= comment.content %>
-
+  <% if current_user %>
+  <%= link_to "Edit", edit_post_comment_path(@post) %>
+  <% end %>
 
   <br />
-  Written by: <%comment.user.username %>
 <% end %>
-<%= link_to "Comment", new_post_comment_path(@post) %>
-<%= link_to "Edit", edit_post_comment_path(@post) %>

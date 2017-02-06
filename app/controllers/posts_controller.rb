@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 before_action :authenticate_user
   def index
     @posts = Post.all
+    
   end
 
   def show
@@ -11,7 +12,7 @@ before_action :authenticate_user
   def new
 
     @post = Post.new
-    
+
   end
 
   def create
@@ -22,7 +23,6 @@ before_action :authenticate_user
       redirect_to new_post_path
     end
   end
-
 
 
   private

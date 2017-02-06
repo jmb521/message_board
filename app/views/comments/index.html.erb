@@ -1,6 +1,10 @@
-<% @post_comments.each do |comment| %>
+<% @comments.each do |comment| %>
+
 <%= comment.content %> by :<%= comment.user.username %>
 <br />
-<%= link_to "Edit", edit_post_comment_path(post.comment) %>
-<%= link_to "Delete", destroy_post_comment(post.comment), :method => 'delete' %>
+
+<%= link_to "Edit", edit_post_comment_path(comment.post_id, comment) %>
+
+<%= link_to "Delete", comment, :method => 'delete' %>
+
 <% end %>
