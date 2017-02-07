@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
-
+before_action :authenticate_user
   def index
 
     if params[:post_id]
-      post = Post.find_by(id: params[:post_id])
-      @comments = post.comments
+      @post = Post.find_by(id: params[:post_id])
+      @comments = @post.comments
+
 
     else
       @comments = Comment.all
@@ -16,7 +17,7 @@ class CommentsController < ApplicationController
   end
   def new
 
-    @comment = Comment.new(post_id: params[:post_id])
+    @comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
   end
 
 
@@ -25,7 +26,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
 
-      redirect_to post_comments_path(@comment)
+      redirect_to post_comments_path(@comment.post, @comment)
       # redirect_to comments_path(@comment)
     else
       redirect_to posts_path, notice: "Your comment couldn't be saved"
@@ -33,14 +34,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    if params[:post_id]
-      post = Post.find_by(id: params[:post_id])
-
-      @comment = post.comments.find_by(id: params[:id])
-      redirect_to post_comments_path
-    else
-      @post = Post.find(params[:id])
-    end
+    @comment = Comment.find_by(id: params[:id])
 
   end
 
@@ -53,6 +47,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
   end

@@ -3,7 +3,7 @@
 <%= comment.content %> by :<%= comment.user.username %>
 <br />
 
-<%= link_to "Edit", edit_post_comment_path(comment.post_id, comment) %>
+<%= link_to "Edit", edit_comment_path(comment) %>
 
 <%= link_to "Delete", comment, :method => 'delete' %>
 

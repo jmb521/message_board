@@ -8,7 +8,7 @@ Comments:
 Written by: <%comment.user.username %> |
   <%= comment.content %>
   <% if current_user %>
-  <%= link_to "Edit", edit_post_comment_path(@post) %>
+  <%= link_to "Edit", edit_comment_path(comment) %>
   <% end %>
 
   <br />

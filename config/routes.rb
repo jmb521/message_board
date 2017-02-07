@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   delete "/logout", to: "sessions#destroy"
   resources :posts do
-    resources :comments
+    resources :comments, only: [:show, :index, :new]
   end
   resources :comments
   # delete "/delete_comment", to: "comments#destroy"
@@ -14,10 +14,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts
   end
-  # get 'posts/:id/comments', to: 'posts#comments_index'
-  # get 'posts/:id/comments/:comment_id', to: 'posts#comment'
-  # post '/posts/:post_id/comments/new', to: 'comments#create'
-  # get '/posts/:post_id/comments/:id/edit', to: 'comments#edit'
   root 'posts#index'
 
 
