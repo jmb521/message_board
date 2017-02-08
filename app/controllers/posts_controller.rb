@@ -6,7 +6,7 @@ before_action :set_user, :authorize
   end
 
   def show
-    
+
     @post = Post.find_by(id: params[:id])
   end
 
@@ -28,7 +28,7 @@ before_action :set_user, :authorize
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to post_path(@post.id)
+    redirect_to posts_path
   end
 
 
