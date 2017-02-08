@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-before_action :authenticate_user
+before_action :authorize, :set_user
   def index
 
     if params[:post_id]

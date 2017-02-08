@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get '/signup', to: "users#new"
   get "/login", to: "sessions#login"
-  post '/signin' => 'sessions#create'
+  post '/login' => 'sessions#create'
+
   delete "/logout", to: "sessions#destroy"
   resources :posts do
     resources :comments, only: [:show, :index, :new]

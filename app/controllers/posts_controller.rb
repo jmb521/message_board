@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-# before_action :authenticate_user
+before_action :set_user, :authorize
   def index
     @posts = Post.all
 
   end
 
   def show
+    
     @post = Post.find_by(id: params[:id])
   end
 
