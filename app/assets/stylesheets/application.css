@@ -27,6 +27,26 @@ nav {
   margin: 0;
   padding: 0;
   height: 50px;
-  
-  background-color: blue;
+  color: white;
+  font-weight: bold;
+  background-color: teal;
+  font-size: 16pt;
+}
+nav a {
+  color: white;
+  font-weight: bold;
+}
+.loginlogout {
+  width: auto;
+  float: right;
+  padding: 10px 20px;
+
+}
+.main-nav {
+  padding: 10px 20px;
+}
+
+.username {
+  font-weight: bolder;
+  font-size: 18pt;
 }

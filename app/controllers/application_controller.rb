@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-    current_user.admin
+    current_user.admin?
   end
 
   def is_moderator?
-    current_user.moderator
+    current_user.moderator?
   end
 
   def set_user

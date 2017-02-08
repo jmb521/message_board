@@ -1,14 +1,14 @@
 <%= @post.content %>
+<% binding.pry %>
 <%= link_to "Comment", new_post_comment_path(@post) %>
 <br />
 Comments:
 <br />
 <% @post.comments.each do |comment| %>
 
-Written by: <%comment.user.username %> |
-  <%= comment.content %>
+<span class="username"><%= comment.user.username %></span> <%= comment.content %>
   <% if current_user %>
-  <%= link_to "Edit", edit_comment_path(comment) %>
+  <%= link_to "Edit", edit_comment_path(comment) %> | <%= link_to "Delete", comment, :method => 'delete' %>
   <% end %>
 
   <br />
