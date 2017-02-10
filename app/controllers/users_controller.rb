@@ -1,21 +1,19 @@
 class UsersController < ApplicationController
 before_action :set_user
+validates :email, confirmation: true
   def new
     @user = User.new
     @profile = Profile.new(user_id: params[:id])
   end
 
   def create
-    
-    @user = User.find_by(email: params[:email]) || User.new(user_params) #not sure i this is necessary
-      if @user.password == @user.password_confirmation
-        if @user.save
-          session[:user_id] = @user.id
-
-          redirect_to posts_path
-        else
-          render 'new'
-        end
+    if params[:password] == params[:password_confirmation]
+      @user = User.find_or_create_by(email: params[:email])
+      session[:user_id] = @user.id
+      redirect_to posts_path
+    else
+      render 'new'
+      end
       else
         redirect_to login_path
       end

@@ -1,4 +1,6 @@
-<%= @profile.user.username %>
+<%= current_user.username %>
 <br />
 <br />
+Profile Picture:
 <%= @profile.photo_url %>
+<%= link_to "Edit", edit_profile_path %>

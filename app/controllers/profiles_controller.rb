@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authorize, :set_user
 
   def show
-      @profile = Profile.find_by(user_id: current_user.id)
+      @profile = Profile.find_by(id: params[:id])
   end
 
   # def new
@@ -18,6 +18,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:url, :user_id)
+    params.require(:profile).permit(:photo_url, :user_id)
   end
 end
