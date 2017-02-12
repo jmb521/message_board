@@ -12,6 +12,7 @@ before_action :set_user
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
+        
         redirect_to posts_path
       else
         redirect_to login_path

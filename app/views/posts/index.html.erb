@@ -3,7 +3,7 @@
  <br />
 
 <% @posts.each do |post| %>
-  <%= link_to(post.title, post_path(post.id)) %>
+  <%= link_to(post.content, post_path(post.id)) %>
 
   <% if current_user || is_admin? || is_moderator?  %>
     <%= link_to "Delete", post, :method => 'delete' %>
