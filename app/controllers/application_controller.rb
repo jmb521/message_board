@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
   # before_action :authorize, except: [:new, :create, :home]
   def home
-    render '/'
+
   end
 
   def current_user
@@ -34,4 +34,5 @@ class ApplicationController < ActionController::Base
     @user = current_user
   end
 
+  
 end
