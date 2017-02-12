@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-before_action :set_user, :authorize, :except => [:create, :new]
+before_action :authorize, :except => [:create, :new]
+before_action :set_user
 
 
   def new
     @user = User.new
-    
+
   end
 
   def create

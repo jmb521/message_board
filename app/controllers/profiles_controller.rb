@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authorize, :set_user
 
   def show
-      @profile = Profile.find_by(id: params[:id])
+      @profile = Profile.find_by(user_id: current_user.id)
   end
 
 
