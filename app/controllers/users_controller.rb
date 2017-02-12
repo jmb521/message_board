@@ -1,23 +1,23 @@
 class UsersController < ApplicationController
-before_action :set_user
+before_action :set_user, :authorize, :except => [:create, :new]
 
 
   def new
     @user = User.new
-    @profile = Profile.new
+    
   end
 
   def create
 
     @user = User.new(user_params)
     if User.find_by(email: @user.email) != nil
-      @message = "There is already an account with that email"
-      #need to figure out what I want to do. I can either redirect to the login path so that the user can attempt sign in or
-      #should I just show a message saying there's already an account and leave it at that since there's already a login link on the page. 
+      flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
+      render 'new'
+      flash[:alert] = nil
     else
       if @user.save
         session[:user_id] = @user.id
-
+        Profile.create(user_id: @user.id)
         redirect_to posts_path
       else
         redirect_to login_path
