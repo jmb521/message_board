@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :authorize, :except => [:create, :new]
-before_action :set_user
+# before_action :authorize, :except => [:create, :new]
+
 
 
   def new
@@ -9,13 +9,9 @@ before_action :set_user
   end
 
   def create
-
+binding.pry
     @user = User.new(user_params)
-    if User.find_by(email: @user.email) != nil
-      flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
-      render 'new'
-      flash[:alert] = nil
-    else
+
       if @user.save
         session[:user_id] = @user.id
         Profile.create(user_id: @user.id)
@@ -23,7 +19,7 @@ before_action :set_user
       else
         redirect_to login_path
       end
-    end
+
   end
 
   def show
@@ -38,3 +34,11 @@ before_action :set_user
   end
 
 end
+
+# if User.find_by(email: @user.email) != nil
+#   flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
+# binding.pry
+#   render 'new'
+#   flash[:alert] = nil
+# else
+# end
