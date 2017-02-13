@@ -22,6 +22,9 @@
 
       <div class="main-nav">
         <%= link_to "Home", root_path %>
+        <% if logged_in? %>
+        <%= link_to "Message Board", posts_path %>
+        <% end %>
 
       </div>
 
