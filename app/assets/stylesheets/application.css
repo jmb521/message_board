@@ -50,3 +50,8 @@ nav a {
   font-weight: bolder;
   font-size: 18pt;
 }
+.main_content {
+  padding-left: 20%;
+  padding-right: 20%;
+  
+}

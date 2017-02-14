@@ -9,7 +9,13 @@ class UsersController < ApplicationController
   end
 
   def create
-binding.pry
+    if User.find_by(email: @user.email) != nil
+      flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
+    binding.pry
+      render 'new'
+      flash[:alert] = nil
+    else
+
     @user = User.new(user_params)
 
       if @user.save
@@ -19,7 +25,7 @@ binding.pry
       else
         redirect_to login_path
       end
-
+    end
   end
 
   def show
@@ -34,11 +40,3 @@ binding.pry
   end
 
 end
-
-# if User.find_by(email: @user.email) != nil
-#   flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
-# binding.pry
-#   render 'new'
-#   flash[:alert] = nil
-# else
-# end

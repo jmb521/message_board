@@ -25,9 +25,8 @@ before_action :authorize, :set_user
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-
-      redirect_to post_comment_path(@comment.post_id, @comment.id)
-      # redirect_to comments_path(@comment)
+      redirect_to post_path(@comment.post_id)
+      
     else
       redirect_to posts_path, notice: "Your comment couldn't be saved"
     end

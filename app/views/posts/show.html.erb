@@ -1,6 +1,6 @@
-<%= @post.content %>
+<h3><%= @post.content %></h3>
 
-<%= link_to "Comment", new_post_comment_path(@post) %>
+
 <br />
 Comments:
 <br />
@@ -13,3 +13,5 @@ Comments:
 
   <br />
 <% end %>
+
+<%= link_to "Comment", new_post_comment_path(@post) %>
