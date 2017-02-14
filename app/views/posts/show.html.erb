@@ -1,17 +1,19 @@
-<h3><%= @post.content %></h3>
+<h1><%= @post.content %></h1>
 
 
 <br />
 Comments:
 <br />
+<div class="comment">
 <% @post.comments.each do |comment| %>
 
-<span class="username"><%= comment.user.username %></span> <%= comment.content %>
-  <% if current_user %>
+<p><span class="username"><%= comment.user.username %></span> <%= comment.content %>
+  <% if comment.user.id == current_user.id%>
   <%= link_to "Edit", edit_comment_path(comment) %> | <%= link_to "Delete", comment, :method => 'delete' %>
   <% end %>
 
   <br />
 <% end %>
-
+</p>
+</div>
 <%= link_to "Comment", new_post_comment_path(@post) %>
