@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 before_action :set_user, :authorize
   def index
     @posts = Post.all
-
+    @post = Post.new
   end
 
   def show
