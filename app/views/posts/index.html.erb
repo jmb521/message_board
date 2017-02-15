@@ -3,9 +3,10 @@
  <br />
 
 <% @posts.each do |post| %>
-  <%= link_to(post.content, post_path(post.id)) %>
+  <%= link_to(post.content, post_path(post.id)) %> | by: <span class="username"><%= post.user.username %> </span> on: <%= post.created_at %>
 
-  <% if current_user || is_admin? || is_moderator?  %>
+  <% if post.user.id == current_user.id || is_admin? || is_moderator?  %>
+    <%= link_to "Edit Post", edit_post_path(post) %>
     <%= link_to "Delete", post, :method => 'delete' %>
     <% end %>
   <hr />
