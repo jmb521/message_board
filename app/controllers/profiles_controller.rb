@@ -15,7 +15,10 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
     redirect_to profile_path(@profile)
   end
-
+  
+  def profile_pic
+    @profile = Profile.find_by(id: params[:id])
+  end
 
   private
   def profile_params

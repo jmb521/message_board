@@ -7,7 +7,10 @@ Comments:
 <div class="comment">
 <% @post.comments.each do |comment| %>
 
-<p><span class="username"><%= comment.user.username %></span> <%= comment.content %>
+<p>
+  
+  <%= render partial: "/profiles/profile_pic", locals: {profile: @profile} %>
+  <span class="username"><%= comment.user.username %></span> <%= comment.content %>
   <% if comment.user.id == current_user.id%>
   <%= link_to "Edit", edit_comment_path(comment) %> | <%= link_to "Delete", comment, :method => 'delete' %>
   <% end %>
@@ -16,4 +19,4 @@ Comments:
 <% end %>
 </p>
 </div>
-<%= link_to "Comment", new_post_comment_path(@post) %>
+<%= link_to "New Comment", new_post_comment_path(@post) %>
