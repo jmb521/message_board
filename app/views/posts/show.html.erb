@@ -8,8 +8,8 @@ Comments:
 <% @post.comments.each do |comment| %>
 
 <p>
-  
-  <%= render partial: "/profiles/profile_pic", locals: {profile: @profile} %>
+
+  <%= render partial: "/profiles/profile_pic", locals: {profile: Profile.find_by(user_id: current_user.id)} %>
   <span class="username"><%= comment.user.username %></span> <%= comment.content %>
   <% if comment.user.id == current_user.id%>
   <%= link_to "Edit", edit_comment_path(comment) %> | <%= link_to "Delete", comment, :method => 'delete' %>
@@ -17,6 +17,7 @@ Comments:
 
   <br />
 <% end %>
+
 </p>
+<%= render partial: "/comments/form", locals: {:comment => Comment.new(post_id: @post.id, user_id: current_user.id)} %>
 </div>
-<%= link_to "New Comment", new_post_comment_path(@post) %>

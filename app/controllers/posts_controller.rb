@@ -3,12 +3,15 @@ before_action :set_user, :authorize
   def index
     @posts = Post.all
     @post = Post.new
+
   end
 
   def show
 
     @post = Post.find_by(id: params[:id])
-    @profile = Profile.find_by(user_id: current_user.id)
+    
+
+
   end
 
   def new

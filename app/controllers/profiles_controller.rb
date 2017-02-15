@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authorize, :set_user
+  before_action :authorize
 
   def show
       @profile = Profile.find_by(id: params[:id])
@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
     redirect_to profile_path(@profile)
   end
-  
+
   def profile_pic
     @profile = Profile.find_by(id: params[:id])
   end
