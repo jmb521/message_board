@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if User.find_by(email: @user.email) != nil
+    if User.find_by(email: params[:email]) != nil
       flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
     binding.pry
       render 'new'
