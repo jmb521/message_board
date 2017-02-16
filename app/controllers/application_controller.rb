@@ -23,11 +23,11 @@ class ApplicationController < ActionController::Base
 
   def is_admin?
 
-    current_user.admin
+    current_user.role == "admin"
   end
 
   def is_moderator?
-    current_user.moderator
+    current_user.role == "moderator"
   end
 
   def set_user
