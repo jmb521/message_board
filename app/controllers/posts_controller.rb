@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 before_action :set_user, :authorize
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at ASC').reverse_order
+
     @post = Post.new
 
   end
@@ -9,8 +10,6 @@ before_action :set_user, :authorize
   def show
 
     @post = Post.find_by(id: params[:id])
-    
-
 
   end
 

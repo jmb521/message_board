@@ -1,6 +1,7 @@
  <br />
- <br />
 
+ <%= render :partial => 'form' %>
+ <br />
 <% @posts.each do |post| %>
   <%= link_to(post.content, post_path(post.id)) %>
   <br />
@@ -13,6 +14,3 @@
   <hr />
 
 <% end %>
-
-
-<%= render :partial => 'form' %>

@@ -5,7 +5,8 @@
 Comments:
 <br />
 <div class="comment">
-<% @post.comments.each do |comment| %>
+  <%= render partial: "/comments/form", locals: {:comment => Comment.new(post_id: @post.id, user_id: current_user.id)} %>
+<% @post.comments.reverse_each do |comment| %>
 
 <p>
 
@@ -19,5 +20,4 @@ Comments:
 <% end %>
 
 </p>
-<%= render partial: "/comments/form", locals: {:comment => Comment.new(post_id: @post.id, user_id: current_user.id)} %>
 </div>

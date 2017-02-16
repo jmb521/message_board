@@ -6,7 +6,6 @@ before_action :authorize, :set_user
       @post = Post.find_by(id: params[:post_id])
       @comments = @post.comments
 
-
     else
       @comments = Comment.all
     end
@@ -16,13 +15,14 @@ before_action :authorize, :set_user
   end
   def new
     @comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
+    binding.pry
   end
 
 
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    
+
     if @comment.save
       redirect_to post_path(@comment.post_id)
 
