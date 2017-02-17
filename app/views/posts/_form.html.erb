@@ -1,7 +1,7 @@
 <%= form_for @post do |f| %>
   <%= f.label "New Post" %>
   <br />
-  <%= f.text_field :content %>
+  <%= f.text_area :content, :cols => '80', :rows => '5' %>
   <br />
   <br />
   <%= f.submit %>

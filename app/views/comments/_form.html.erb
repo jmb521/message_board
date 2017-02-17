@@ -1,7 +1,7 @@
 <%= form_for comment do |f| %>
-<%= f.label :content %>
+<%= f.label "New Comment" %>
 <br />
-<%= f.text_field :content %>
+<%= f.text_field :content, :cols => '80', :rows => '5' %>
 <%= f.hidden_field :user_id %>
 <%= f.hidden_field :post_id %>
 
