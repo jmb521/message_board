@@ -13,7 +13,8 @@ Comments:
   <%= render partial: "/profiles/profile_pic", locals: {profile: Profile.find_by(user_id: current_user.id)} %>
   <span class="username"><%= comment.user.username %></span> <%= comment.content %>
   <% if comment.user.id == current_user.id%>
-  <%= link_to "Edit", edit_comment_path(comment) %> | <%= link_to "Delete", comment, :method => 'delete' %>
+
+  <%= link_to "Edit", edit_post_comment_path(@post, comment), method: 'get' %> | <%= link_to "Delete", comment, :method => 'delete' %>
   <% end %>
 
   <br />

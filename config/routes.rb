@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :profiles
   resources :posts do
-    resources :comments, only: [:show, :index, :new]
+    resources :comments, only: [:show, :index, :new, :edit]
   end
 
   get '/signup' => "users#new"
