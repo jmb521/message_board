@@ -5,7 +5,7 @@
 Comments:
 <br />
 <div class="comment">
-  <%= render partial: "/comments/form", locals: {:comment => Comment.new(post_id: @post.id, user_id: current_user.id)} %>
+  <%= render partial: "posts/comment_content", post: @post%>
 <% @post.comments.reverse_each do |comment| %>
 
 <p>

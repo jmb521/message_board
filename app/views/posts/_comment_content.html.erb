@@ -1,0 +1,13 @@
+
+<%= form_for @post do |f| %>
+<%= f.label "Comment" %>
+
+<%=f.fields_for :comment_attributes do |c_content| %>
+  <%= c_content.text_field :content %>
+  <%= c_content.hidden_field :user_id, value: current_user.id %>
+
+
+  <% end %>
+
+<%= f.submit "Create Comment" %>
+<% end %>
