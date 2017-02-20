@@ -36,7 +36,7 @@ before_action :authorize, :except => [:create, :new]
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :admin, :email)
+    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email)
   end
 
 end

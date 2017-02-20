@@ -1,8 +1,27 @@
 class Admin::ManageUsersController < ApplicationController
 
   def index
-    @users = User.all
+    @manage_users = User.all
+  end
+
+  def show
+    @manage_user = User.find_by(params[:id])
+  end
+
+  def edit
+    @manage_user = User.find_by(params[:id])
+  end
+
+  def update
+    @manage_user = User.find_by(params[:id])
+
+    @manage_user.update(role: params[:role])
+    redirect_to manage_user_path(@manage_user)
   end
 
 
+  private
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email)
+  end
 end

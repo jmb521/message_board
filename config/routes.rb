@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy"
 
-  scope '/admin', module: 'admin' do
-    resources :manage_users, only: [:index, :show]
+  namespace :admin do
+    resources :manage_users
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

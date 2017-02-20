@@ -1,0 +1,8 @@
+<%= form_for @manage_user, url: edit_admin_manage_user_path(@manage_user) do |f| %>
+<%= f.label "Change the users role" %>
+<br />
+<br />
+<%= f.select "role", options_for_select(["User", "Moderator", "Admin"]), include_blank: false %>
+<br />
+<%= f.submit %>
+<% end %>

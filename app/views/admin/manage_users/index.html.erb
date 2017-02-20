@@ -1,4 +1,4 @@
-<% @users.each do |user| %>
-  <p><%= link_to user.username, manage_user_path(user) %></p>
+<% @manage_users.each do |user| %>
+  <p><%= link_to user.username, admin_manage_user_path(user) %></p>
 
 <% end %>
