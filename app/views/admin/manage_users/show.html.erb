@@ -1,5 +1,5 @@
 <br />
-<h3><%= @manage_user.username %></h3>
+<%= current_user.username %>
 <br />
-<br />
+<br />Current Role: <%= @manage_user.role %>
 <%= render 'form' %>

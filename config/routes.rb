@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'application#home'
+
+  namespace :admin do
+    resources :manage_users, only: [:show, :index, :new, :edit, :destroy]
+  end
+  patch '/admin/manage_users/:id/edit' => "admin/manage_users#update"
   resources :comments
   resources :profiles
   resources :posts do
@@ -14,9 +19,6 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy"
 
-  namespace :admin do
-    resources :manage_users
-  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

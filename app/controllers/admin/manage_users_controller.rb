@@ -15,8 +15,9 @@ class Admin::ManageUsersController < ApplicationController
   def update
     @manage_user = User.find_by(params[:id])
 
-    @manage_user.update(role: params[:role])
-    redirect_to manage_user_path(@manage_user)
+    @manage_user.update_attribute(:role, params[:user][:role])
+    binding.pry
+    redirect_to admin_manage_user_path(@manage_user)
   end
 
 
