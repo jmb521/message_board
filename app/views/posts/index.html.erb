@@ -7,7 +7,7 @@
   <br />
   by: <%= post.user.username %> on: <%= post.created_at.strftime("%A, %B, %d") %>
 
-  <% if post.user.id == current_user.id || is_admin? || is_moderator?  %>
+  <% if post.user.id == current_user.id || current_user.admin? || current_user.moderator?  %>
     <%= link_to "Edit Post", edit_post_path(post) %>
     <%= link_to "Delete", post, :method => 'delete' %>
     <% end %>

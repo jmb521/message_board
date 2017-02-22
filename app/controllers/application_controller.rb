@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def current_user
 
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-
+    
   end
 
   def authorize
@@ -19,15 +19,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
-  end
-
-  def is_admin?
-
-    current_user.role == "admin"
-  end
-
-  def is_moderator?
-    current_user.role == "moderator"
   end
 
   def set_user
