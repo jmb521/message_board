@@ -5,18 +5,18 @@ class Admin::ManageUsersController < ApplicationController
   end
 
   def show
-    @manage_user = User.find_by(params[:id])
+    @manage_user = User.find_by(id: params[:id])
   end
 
   def edit
-    @manage_user = User.find_by(params[:id])
+    @manage_user = User.find_by(id: params[:id])
   end
 
   def update
-    @manage_user = User.find_by(params[:id])
+    @manage_user = User.find_by(id: params[:id])
 
     @manage_user.update_attribute(:role, params[:user][:role])
-    
+
     redirect_to admin_manage_user_path(@manage_user)
   end
 
