@@ -1,4 +1,6 @@
-
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 <div class="login">
 <%= form_for @user, url: login_path do |f| %>
   <%= f.label :email %>
