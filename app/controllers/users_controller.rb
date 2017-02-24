@@ -23,7 +23,6 @@ before_action :authorize, :except => [:create, :new]
         Profile.create(user_id: @user.id)
         redirect_to posts_path
       else
-        # redirect_to login_path
         render :new
       end
     end
