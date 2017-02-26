@@ -1,5 +1,6 @@
 class Admin::ManageUsersController < ApplicationController
   before_action :set_user
+  before_filter :for_admin_and_moderator_only
   def index
     @manage_users = User.all
   end
@@ -23,5 +24,11 @@ class Admin::ManageUsersController < ApplicationController
 
     def set_user
       @manage_user = User.find_by(id: params[:id])
+    end
+
+    def for_admin_and_moderator_only
+      if !current_user.admin? || !current_user.moderator?
+        redirect_to posts_path
+      end
     end
 end
