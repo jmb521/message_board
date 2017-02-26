@@ -27,7 +27,7 @@ class Admin::ManageUsersController < ApplicationController
     end
 
     def for_admin_and_moderator_only
-      if !current_user.admin? || !current_user.moderator?
+      if current_user.user?
         redirect_to posts_path
       end
     end
