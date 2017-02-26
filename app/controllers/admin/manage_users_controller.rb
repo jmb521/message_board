@@ -16,13 +16,12 @@ class Admin::ManageUsersController < ApplicationController
     redirect_to admin_manage_user_path(@manage_user)
   end
 
-
   private
-  def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email)
-  end
+    def user_params
+      params.require(:user).permit(:username, :password, :password_confirmation, :role, :email)
+    end
 
-  def set_user
-    @manage_user = User.find_by(id: params[:id])
-  end
+    def set_user
+      @manage_user = User.find_by(id: params[:id])
+    end
 end

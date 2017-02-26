@@ -32,6 +32,12 @@ before_action :authorize, :except => [:create, :new]
     @user = User.find_by(id: params[:id])
   end
 
+  def user_status
+
+    @moderators = User.show_moderators
+    
+  end
+
 
 
   private

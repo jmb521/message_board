@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'application#home'
-
+  resources :users do
+  collection do
+    get 'user_status'
+  end
+end
+  # get '/moderators' => "users#user_status"
   namespace :admin do
     resources :manage_users, only: [:show, :index, :new, :edit, :destroy]
   end
