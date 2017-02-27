@@ -11,7 +11,9 @@ end
   end
   patch '/admin/manage_users/:id/edit' => "admin/manage_users#update"
   resources :comments
-  resources :profiles
+  resources :profiles do
+    resources :addresses
+  end
   resources :posts do
     resources :comments, only: [:show, :index, :new, :edit]
   end
