@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one :profile
   has_many :posts
   has_many :comments, :through => :posts
+  has_one :address, :through => :profile
   enum role: [:user, :moderator, :admin]
   has_secure_password
 
