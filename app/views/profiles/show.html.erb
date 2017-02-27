@@ -1,8 +1,17 @@
 <%= current_user.username %>
 <br />
 <br />
+<% if @profile.address.nil? %>
+  <%=link_to "Add your address", new_profile_address_path %>
+<% else %>
+  <%= link_to "Edit your address", edit_profile_address_path(@profile) %>
+<% end %>
+<br />
+<br />
 Profile Picture:
 <br />
 <img src="<%= @profile.photo_url %>" />
 <br />
 <%= link_to "Edit", edit_profile_path %>
+<br />
+<br />

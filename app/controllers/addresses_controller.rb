@@ -27,7 +27,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find_by(id: params[:id])
     @address.update(address_params)
-
+    redirect_to profile_address_path(@address.profile_id, @address.user_id)
   end
 
 

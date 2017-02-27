@@ -1,2 +1,29 @@
 <br />
 <br />
+Your Address:
+<br />
+<br />
+<%= @address.address1 %>
+<br />
+
+<% if !@address.address2.nil? %>
+<br />
+
+<% else %>
+<%= @address.address2 %>
+<br />
+<br />
+
+<% end %>
+
+<%= @address.city %>
+<br />
+<br />
+<%= @address.state %>
+<br />
+<br />
+<%= @address.zipcode %>
+
+<br />
+<br />
+<%= link_to "Edit your address", edit_profile_address_path(@address) %>
