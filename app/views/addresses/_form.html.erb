@@ -1,0 +1,35 @@
+<br />
+<br />
+<br />
+<%= form_for @address do |f| %>
+  <%= f.label "Address" %>
+  <br />
+
+  <%= f.text_field :address1 %>
+  <br />
+  <br />
+  <%= f.label "Address" %>
+  <br />
+
+  <%= f.text_field :address2 %>
+  <br />
+  <br />
+  <%= f.label :city %>
+  <br />
+
+  <%= f.text_field :city %>
+  <br />
+  <br />
+  <%= f.label :state %>
+  <br />
+  <%= f.text_field :state %>
+  <br />
+  <br />
+  <%= f.label :zipcode %>
+  <br />
+  <%= f.text_field :zipcode %>
+  <%= f.hidden_field :profile_id %>
+  <br />
+  <br />
+  <%= f.submit %>
+<% end %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'user_status'
   end
 end
-  # get '/moderators' => "users#user_status"
+
   namespace :admin do
     resources :manage_users, only: [:show, :index, :new, :edit, :destroy]
   end
@@ -14,6 +14,7 @@ end
   resources :profiles do
     resources :addresses
   end
+  resources :addresses, only: [:show, :index, :new, :edit, :create, :update]
   resources :posts do
     resources :comments, only: [:show, :index, :new, :edit]
   end

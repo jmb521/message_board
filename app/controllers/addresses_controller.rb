@@ -1,7 +1,8 @@
 class AddressesController < ApplicationController
 
   def new
-    @address = Address.new
+
+    @address = Address.new(profile_id: params[:profile_id])
   end
 
   def show
@@ -9,7 +10,12 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new
+    @address = Address.new(address_params)
+    @address.user_id = current_user.id
+    if @address.save
+      redirect_to profile_address_path(@address.profile_id, @address.user_id)
+    end
+    binding.pry
 
   end
 
