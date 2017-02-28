@@ -1,7 +1,8 @@
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :authorize, :logged_in?, :is_admin?, :is_moderator?, :is_owner?
-  before_action :current_user
+  helper_method :current_user, :authorize, :logged_in?
+  before_action :current_user, :authorize, 
   # before_action :authorize, except: [:new, :create, :home]
   def home
 
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
   def current_user
 
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    
+
   end
 
   def authorize

@@ -1,6 +1,6 @@
 class Admin::ManageUsersController < ApplicationController
   before_action :set_user
-  before_filter :for_admin_and_moderator_only
+  before_action :for_admin_and_moderator_only
   def index
     @manage_users = User.all
   end

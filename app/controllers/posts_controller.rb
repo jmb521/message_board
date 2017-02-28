@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :set_user, :authorize
+before_action :authorize
   def index
     @posts = Post.all.order('created_at ASC').reverse_order
 
