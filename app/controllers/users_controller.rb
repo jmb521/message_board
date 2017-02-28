@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 before_action :authorize, :except => [:create, :new]
-
-
+before_action :set_user
 
   def new
     @user = User.new
@@ -11,7 +10,7 @@ before_action :authorize, :except => [:create, :new]
   def create
     if User.find_by(email: params[:email]) != nil
       flash[:alert] = "There is already an account with that email address" #used when someone creates an account with the same email address
-    binding.pry
+
       render 'new'
       flash[:alert] = nil
     else
@@ -29,13 +28,10 @@ before_action :authorize, :except => [:create, :new]
   end
 
   def show
-    @user = User.find_by(id: params[:id])
   end
 
   def user_status
-
     @moderators = User.show_moderators
-    
   end
 
 
@@ -44,5 +40,7 @@ before_action :authorize, :except => [:create, :new]
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :role, :email)
   end
-
+  def set_user
+    @user = User.find_by(id: params[:id])
+  end
 end
