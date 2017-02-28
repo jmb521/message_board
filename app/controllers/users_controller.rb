@@ -14,8 +14,7 @@ before_action :set_user
       render 'new'
       flash[:alert] = nil
     else
-
-    @user = User.new(user_params)
+      @user = User.new(user_params)
 
       if @user.save
         session[:user_id] = @user.id
