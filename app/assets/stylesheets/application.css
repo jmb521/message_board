@@ -73,3 +73,8 @@ nav a {
   font-size: 20pt;
 
 }
+.login-links {
+  font-size: 16pt;
+  text-align: center;
+  text-decoration: none;
+}
