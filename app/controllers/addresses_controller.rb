@@ -5,6 +5,7 @@ class AddressesController < ApplicationController
   end
 
   def show
+    
   end
 
   def create

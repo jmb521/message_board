@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :authorize, :except => [:create, :new]
-before_action :set_user
+# before_action :authorize, :except => [:create, :new]
+
 
   def new
     @user = User.new
@@ -27,6 +27,7 @@ before_action :set_user
   end
 
   def show
+    @user = User.find_by(id: params[:id])
   end
 
   def user_status
@@ -39,7 +40,5 @@ before_action :set_user
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :role, :email)
   end
-  def set_user
-    @user = User.find_by(id: params[:id])
-  end
+
 end

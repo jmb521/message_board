@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :authorize, :logged_in?
-  before_action :current_user, :authorize, 
+  before_action :current_user
   # before_action :authorize, except: [:new, :create, :home]
   def home
 
