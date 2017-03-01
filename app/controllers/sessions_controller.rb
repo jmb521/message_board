@@ -3,23 +3,18 @@ class SessionsController < ApplicationController
       @user = User.find_by(email: params[:user][:email])
 
       if @user == nil
-
         flash[:notice] = "You are not a registered user."
         redirect_to login_path
       elsif @user != nil
         if @user && @user.authenticate(params[:user][:password])
           session[:user_id] = @user.id
-
           redirect_to posts_path
         else
           flash[:notice] = "Invalid username/password combination"
           render :new
         end
       end
-
   end
-
-
 
   def omniauth_create
     user = User.find_by(:email => auth['info']['email'])
@@ -32,17 +27,14 @@ class SessionsController < ApplicationController
     else
       redirect_to signup_path
     end
-
   end
 
   def auth
     request.env['omniauth.auth']
-
   end
 
   def new
       @user = User.new
-
   end
 
   def destroy
