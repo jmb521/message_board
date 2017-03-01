@@ -5,7 +5,7 @@ class AddressesController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def create
@@ -22,7 +22,7 @@ class AddressesController < ApplicationController
 
   def update
     @address.update(address_params)
-    binding.pry
+    
     redirect_to profile_address_path(@address.profile_id, @address.user_id)
   end
 
