@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :authorize, :logged_in?
   before_action :current_user
-  
-  def home
 
+  def home
+    render :layout => "home"
   end
 
   def current_user

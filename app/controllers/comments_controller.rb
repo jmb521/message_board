@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-before_action :authorize
+before_action :authorize, :set_comment
+
   def index
 
     if params[:post_id]
@@ -15,7 +16,7 @@ before_action :authorize
   end
   def new
     @comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
-    binding.pry
+
   end
 
 
@@ -32,21 +33,15 @@ before_action :authorize
   end
 
   def edit
-    @comment = Comment.find_by(id: params[:id])
-
   end
 
-
-
   def update
-    @comment = Comment.find_by(id: params[:id])
+
     @comment.update(comment_params)
     redirect_to post_path(@comment.post_id)
   end
 
   def destroy
-
-    @comment = Comment.find_by(id: params[:id])
     @comment.destroy
     redirect_to post_path(@comment.post_id)
   end
@@ -54,5 +49,8 @@ before_action :authorize
 
   def comment_params
     params.require(:comment).permit(:user_id, :post_id, :content)
+  end
+  def set_comment
+    @comment = Comment.find_by(id: params[:id])
   end
 end

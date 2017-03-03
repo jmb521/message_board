@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageBoard</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <!-- <div class="loginlogout"><% if logged_in? %>
+        Welcome, <%= current_user.username %>
+        <%= link_to "Profile", profile_path(id: current_user.id) %>
+        <% if current_user.admin? || current_user.moderator? %>
+        <%= link_to "Manage Users", admin_manage_users_path %>
+        <% end %>
+        <%= link_to 'Logout', logout_path, :method => 'delete' %>
+        <% else %>
+        <%= link_to 'Login', login_path %>
+        <%= link_to 'Sign Up', signup_path %>
+        <% end %>
+
+      </div>
+
+      <div class="main-nav">
+        <%= link_to "Home", root_path %>
+        <% if logged_in? %>
+        <%= link_to "Message Board", posts_path %>
+        <% end %>
+
+      </div> -->
+
+    </nav>
+    <div class="main_content">
+    <%= yield %>
+  </div>
+  </body>
+</html>
