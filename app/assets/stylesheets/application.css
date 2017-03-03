@@ -25,20 +25,22 @@
   width: 200px;
   margin: 0 auto;
   margin-top: 125px;
-  background-color: #99ccff;
+  background-color: #f0ecd7;
+  padding: 30px;
 }
 nav {
   margin: 0;
   padding: 0;
   height: 50px;
-  color: white;
+  color: #FFF;
   font-weight: bold;
-  background-color: teal;
+  background-color: #d5c197;
   font-size: 16pt;
 }
 nav a {
   color: white;
   font-weight: bold;
+  text-decoration: none;
 }
 .loginlogout {
   width: auto;
