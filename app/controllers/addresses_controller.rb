@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
     @address.user_id = current_user.id
     if @address.save
 
-      redirect_to profile_address_path(@address)
+      redirect_to profile_address_path(@address.profile, @address)
     end
   end
 
@@ -22,8 +22,8 @@ class AddressesController < ApplicationController
 
   def update
     @address.update(address_params)
-    
-    redirect_to profile_address_path(@address.profile_id, @address.user_id)
+
+    redirect_to profile_address_path(@address.profile_id, @address)
   end
 
 

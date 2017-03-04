@@ -8,6 +8,7 @@ Get to know your moderators: <%= link_to "Moderators", user_status_users_path %>
 <% @posts.each do |post| %>
   <%= link_to(post.content, post_path(post.id)) %>
   <br />
+  
   by: <%= post.user.username %> on: <%= post.created_at.strftime("%A, %B, %d") %>
 
   <% if post.user.id == current_user.id || current_user.admin? || current_user.moderator?  %>
