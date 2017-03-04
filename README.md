@@ -1,75 +1,25 @@
-plan:
+Message Board
 
-Sessions Controller - started
+A website that allows users to create/edit/delete posts and comments.
 
-new, create
+Getting Started
 
-*********************************************
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-User -
+Prerequisites
 
-has_one :profile
+There is nothing additional to install.
 
-has_many :comments
+Built With
 
-3 roles - User = 0, moderator = 1, admin = 2
-
-
-
-user table to create
-
-username
-
-password_digest - added to db/added bcrypt gem and has_secure_password in User model
-
-password_confirmation - not included in db.
+Ruby on Rails
 
 
-no guest will have access since this is a private message board.
+Authors
+
+Jennifer Pazos
 
 
-User can delete their own account
+License
 
-moderator can suspend a user.
-
-Admin can delete a User
-
-Admin can add or remove a moderator.
-
-*********************************************
-Profile - started
-
-belongs_to user
-
-profile table to create:
-
-picture
-
-*********************************************
-Post -
-
-has_many_users
-
-has_many :comments, through => users
-
-posts table to create
-
-title
-
-content
-
-**********************************************
-Comments
-
-belongs_to :user
-
-belongs_to :post
-
-
-comments table to create
-
-user_id
-
-post_id
-
-content
+This project is licensed under the MIT License - see the LICENSE.md file for details
