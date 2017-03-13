@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
   def create
       @user = User.find_by(email: params[:user][:email])
 
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
           redirect_to posts_path
         else
           flash[:notice] = "Invalid username/password combination"
-          render :new
+          redirect_to login_path
         end
       end
   end
