@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
-  before_action :authorize, :set_profile
+  before_action :authorize, except: [:show]
+  before_action :set_profile
 
   def show
-    if session[:user_id] != @profile.user_id
-       redirect_to posts_path
-    end
+    # if session[:user_id] != @profile.user_id
+    #    redirect_to posts_path
+    # end
   end
 
   def edit

@@ -9,9 +9,10 @@ Comments:
 <% @post.comments.reverse_each do |comment| %>
 
 <p>
-
-  <img src= "<%= comment.user.profile.photo_url %>" alt="" width=100 height=100/> 
-  <span class="username"><%= comment.user.username %></span> <%= comment.content %>
+  <% if comment.user.profile %>
+  <img src= "<%= comment.user.profile.photo_url %>" alt="" width=100 height=100/>
+  <% end %>
+  <a href= "<%= profile_path(comment.user.id) %>"><span class="username"><%= comment.user.username %></span></a> <%= comment.content %>
   <% if comment.user.id == current_user.id%>
 
   <%= link_to "Edit", edit_post_comment_path(@post, comment), method: 'get' %> | <%= link_to "Delete", comment, :method => 'delete' %>
