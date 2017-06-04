@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20170227010848) do
     t.string   "content"
   end
 
+  create_table "manage_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "content"
     t.datetime "created_at", null: false
