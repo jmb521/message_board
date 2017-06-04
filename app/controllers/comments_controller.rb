@@ -14,7 +14,7 @@ before_action :authorize, :set_comment
 
   def show
     @comment = Comment.find(params[:id])
-    render json: @comment
+    
   end
   def new
     @comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
