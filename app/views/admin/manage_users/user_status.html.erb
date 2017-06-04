@@ -1,0 +1,24 @@
+<br />
+<br />
+
+<div>
+  <h3>Users></h3>
+  <% @manage_users.show_users.each do |user| %>
+    <%= user.username %>
+    <br />
+  <% end %>
+</div>
+<div>
+  <h3>Moderators</h3>
+  <% @manage_users.show_moderators.each do |moderator| %>
+  <%= moderator.username %>
+  <br />
+  <% end %>
+</div>
+<div>
+  <h3>Admin</h3>
+  <% @manage_users.show_admins.each do |admin|
+    <%= admin.username %>
+    <br />
+  <% end %>
+</div>
