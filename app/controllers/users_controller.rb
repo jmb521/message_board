@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 # before_action :authorize, :except => [:create, :new]
-
+  def index
+    @users = User.all
+    render json: @users
+  end
 
   def new
     @user = User.new
