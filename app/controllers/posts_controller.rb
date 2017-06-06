@@ -4,7 +4,11 @@ before_action :authorize, :set_post
     @posts = Post.all.order('created_at ASC').reverse_order
 
     @post = Post.new
-    render json: @posts
+    # render json: @posts
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @posts}
+    end
 
   end
 
