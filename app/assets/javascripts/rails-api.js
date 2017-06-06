@@ -35,11 +35,11 @@ $(document).ready(function() {
 
 
   function addActiveUsers(userIdsArray) {
-    console.log(userIdsArray)
+    // console.log(userIdsArray)
     var usernames = [];
     if(userIdsArray.length > 0) {
       $.get("/users", function(data) {
-        console.log("this is the data: " + data);
+        // console.log("this is the data: " + data);
         for(var i=0; i < userIdsArray.length; i++) {
 
            for(var j=0; j< data.length; j++) {
@@ -48,7 +48,7 @@ $(document).ready(function() {
             }
           }
         }
-        console.log(usernames);
+        // console.log(usernames);
         $("#active-users").append("<ul></ul>");
         $.each(usernames, function(iterator, username) {
           $("#active-users ul").append("<li>" + username + "</li");
