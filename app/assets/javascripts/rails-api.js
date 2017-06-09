@@ -4,7 +4,18 @@ $(document).ready(function() {
 
 });
 
+  function Post(id, content, user_id, created_at, updated_at) {
+    this.id = id;
+    this.content = content;
+    this.user_id = user_id;
+    this.created_at = created_at;
+    this.updated_at = updated_at;
+  }
 
+  function User(id, username) {
+    this.id = id;
+    this.username = username;
+  }
 
   function getTimeDifference() {
     var activeUserIds = [];
@@ -13,25 +24,30 @@ $(document).ready(function() {
       url: "/posts.json",
       dataType: "json"
     }).success(function(data) {
+      var user;
 
       // loop through objects to check to see if the difference is less than 7 days. If it is, put the user_id from that object into an array
       // once the array is full, get a list of users, compare their id to the user_id array to see if there is any matches and get a list of users
       // append the list of users to the dom.
-      for(var i =0; i< data.length; i++) {
-        var splitData = data[i]["created_at"].split("T");
+
+      for(var key in data) {
+        user = new Post(data[key]["id"], data[key]["content"], data[key]["user_id"], data[key]["created_at"], data[key]["updated_at"]);
+        var splitData = user["created_at"].split("T");
         var splitDate = splitData[0].split("-");
         splitDate = splitDate.join(",");
         var prevTime = new Date(splitDate);  // Feb 1, 2011
         var thisTime = new Date();              // now
         var diff = thisTime.getTime() - prevTime.getTime();   // now - Feb 1
         var daysPast = (diff / (1000*60*60*24));
-        if(daysPast < 8) {
-          activeUserIds.push(data[i]["user_id"]);
+          if(daysPast < 8) {
+            activeUserIds.push(user["user_id"]);
+          }
         }
-      }
-      addActiveUsers(activeUserIds);
+        console.log(activeUserIds);
+        addActiveUsers(activeUserIds);
+
     });
-  };
+  }
 
 
   function addActiveUsers(userIdsArray) {

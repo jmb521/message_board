@@ -14,7 +14,10 @@ before_action :authorize, :set_post
 
   def show
     @post = Post.find(params[:id])
-    render json: @post
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @post}
+    end
   end
 
   def new
