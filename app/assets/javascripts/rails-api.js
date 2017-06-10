@@ -31,8 +31,8 @@ $(document).ready(function() {
       // append the list of users to the dom.
 
       for(var key in data) {
-        user = new Post(data[key]["id"], data[key]["content"], data[key]["user_id"], data[key]["created_at"], data[key]["updated_at"]);
-        var splitData = user["created_at"].split("T");
+        post = new Post(data[key]["id"], data[key]["content"], data[key]["user_id"], data[key]["created_at"], data[key]["updated_at"]);
+        var splitData = post["created_at"].split("T");
         var splitDate = splitData[0].split("-");
         splitDate = splitDate.join(",");
         var prevTime = new Date(splitDate);  // Feb 1, 2011
@@ -40,10 +40,10 @@ $(document).ready(function() {
         var diff = thisTime.getTime() - prevTime.getTime();   // now - Feb 1
         var daysPast = (diff / (1000*60*60*24));
           if(daysPast < 8) {
-            activeUserIds.push(user["user_id"]);
+            activeUserIds.push(post["user_id"]);
           }
         }
-        
+
         addActiveUsers(activeUserIds);
 
     });
