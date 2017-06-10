@@ -43,7 +43,7 @@ $(document).ready(function() {
             activeUserIds.push(user["user_id"]);
           }
         }
-        console.log(activeUserIds);
+        
         addActiveUsers(activeUserIds);
 
     });
