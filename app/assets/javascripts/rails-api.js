@@ -24,7 +24,7 @@ $(document).ready(function() {
       url: "/posts.json",
       dataType: "json"
     }).success(function(data) {
-      var user;
+      var post;
 
       // loop through objects to check to see if the difference is less than 7 days. If it is, put the user_id from that object into an array
       // once the array is full, get a list of users, compare their id to the user_id array to see if there is any matches and get a list of users
