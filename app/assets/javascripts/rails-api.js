@@ -55,14 +55,19 @@ $(document).ready(function() {
     var usernames = [];
     if(userIdsArray.length > 0) {
       $.get("/users", function(data) {
+      var user;
         // console.log("this is the data: " + data);
+        //create new user object
+        for(var key in data) {
+          user = new User(data[key]["id"], data[key]["username"]);
+        }
         for(var i=0; i < userIdsArray.length; i++) {
 
-           for(var j=0; j< data.length; j++) {
-             if(userIdsArray[i] === data[j]["id"]) {
-              usernames.push(data[j]["username"]);
+          //  for(var j=0; j< data.length; j++) {
+             if(userIdsArray[i] === user["id"]) {
+              usernames.push(user["username"]);
             }
-          }
+          // }
         }
         // console.log(usernames);
         $("#active-users").append("<ul></ul>");
