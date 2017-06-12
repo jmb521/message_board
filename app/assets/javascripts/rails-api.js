@@ -56,11 +56,9 @@ $(document).ready(function() {
     if(userIdsArray.length > 0) {
       $.get("/users", function(data) {
       var user;
-        // console.log("this is the data: " + data);
-        //create new user object
+        //loop
         for(var key in data) {
           user = new User(data[key]["id"], data[key]["username"]);
-        }
         for(var i=0; i < userIdsArray.length; i++) {
 
           //  for(var j=0; j< data.length; j++) {
@@ -70,12 +68,13 @@ $(document).ready(function() {
           // }
         }
         // console.log(usernames);
+      }
         $("#active-users").append("<ul></ul>");
         $.each(usernames, function(iterator, username) {
           $("#active-users ul").append("<li>" + username + "</li");
         })
        });
-     } else {
-      $("#active-users").append("<p>There have not been active users in the past 7 days</p>");
-    }
+       } else {
+        $("#active-users").append("<p>There have not been active users in the past 7 days</p>");
+      }
   }
