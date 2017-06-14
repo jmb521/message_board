@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     getTimeDifference();
+    clickNextPost();
 
 });
 
@@ -80,6 +81,19 @@ $(document).ready(function() {
   }
 
   /////////////////////////////////////////////////////////////////////////////
+//use jquery/api to get the next post and display it to the user.
 
 
-//use jquery/api to get the next post and display it to the user. 
+  function clickNextPost() {
+    $("#next_button").on("click", function() {
+      var id = $(this).attr("data-id");
+      getNextPost(id);
+
+    });
+  }
+
+  function getNextPost(id) {
+    $.get(`/posts/${id}.json`, function(data) {
+      console.log(data);
+    })
+  }
