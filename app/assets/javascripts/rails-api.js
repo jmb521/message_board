@@ -78,3 +78,8 @@ $(document).ready(function() {
         $("#active-users").append("<p>There have not been active users in the past 7 days</p>");
       }
   }
+
+  /////////////////////////////////////////////////////////////////////////////
+
+
+//use jquery/api to get the next post and display it to the user. 
