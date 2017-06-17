@@ -55,6 +55,7 @@ var allUsers = [];
   }
 
 
+
   function addActiveUsers(userIdsArray) {
     // console.log(userIdsArray)
     var usernames = [];
@@ -66,10 +67,14 @@ var allUsers = [];
           user = new User(data[key]["id"], data[key]["username"]);
           allUsers.push(user);
         for(var i=0; i < userIdsArray.length; i++) {
-
           //  for(var j=0; j< data.length; j++) {
              if(userIdsArray[i] === user["id"]) {
-              usernames.push(user["username"]);
+
+
+               if(!usernames.includes(user["username"])) {
+
+                 usernames.push(user["username"]);
+               }
             }
           // }
         }
@@ -115,6 +120,7 @@ var allUsers = [];
 
     console.log("this is the post: " + foundPost);
     $("#content").text(foundPost.content);
+    $("#")
 
     //since we already have the posts saved in a post object, I will use that to get the next post idea instead of making another request.
 
