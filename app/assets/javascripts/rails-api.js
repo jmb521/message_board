@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     getTimeDifference();
     clickNextPost();
+    getComments();
 
 });
 
@@ -113,5 +114,13 @@ var allUsers = [];
     $.get("/posts/" + nextId, function(data) {
         $("html").html(data);
     })
-  
+
+  }
+
+  //////////////////////////////////////////////////////
+  function getComments() {
+    var postId = $("#next_button").attr("data-id")
+    $.get(`/posts/${postId}.json`, function(data) {
+      console.log(data["comments"]);
+    })
   }

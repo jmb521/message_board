@@ -10,7 +10,7 @@ Get to know your moderators: <%= link_to "Moderators", user_status_users_path %>
  <%= render :partial => 'form' %>
  <br />
 <% @posts.each do |post| %>
-  <%= link_to(post.content, post_path(post.id)) %>
+  <%= link_to post.content, post_path(post.id), :'data-id' => "post.id", :class => "posts" %>
   <br />
 
   by: <%= post.user.username %> on: <%= post.created_at.strftime("%A, %B, %d") %>
