@@ -119,8 +119,19 @@ var allUsers = [];
 
   //////////////////////////////////////////////////////
   function getComments() {
-    var postId = $("#next_button").attr("data-id")
-    $.get(`/posts/${postId}.json`, function(data) {
-      console.log(data["comments"]);
-    })
+
+      var postId = $("#next_button").attr("data-id")
+
+      $.ajax({
+        method: "GET",
+        url: `/posts/${postId}`,
+        dataType: "json"
+      }).success(function(data) {
+        console.log(data["comments"])
+      })
+
+    // $.get(`/posts/${postId}.json`, function(data) {
+    //   console.log(data["comments"]);
+    // })
+
   }
