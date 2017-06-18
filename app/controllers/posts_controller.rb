@@ -4,9 +4,9 @@ before_action :authorize, :set_post
     @posts = Post.all.order('created_at ASC').reverse_order
 
     @post = Post.new
-    # render json: @posts
+
     respond_to do |format|
-      format.html { render :index }
+      format.html { render :index}
       format.json { render json: @posts}
     end
 
@@ -15,9 +15,10 @@ before_action :authorize, :set_post
   def show
     @post = Post.find(params[:id])
     respond_to do |format|
-      format.html { render :show }
+      format.html { render :show}
       format.json { render json: @post}
     end
+
   end
 
   def new

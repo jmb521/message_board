@@ -22,6 +22,6 @@ Comments:
 <% end %>
 
 </p>
-<button id="next_button" data-id="<%= @post.id %>">Next</button>
 
 </div>
+<%= link_to "Next Post", posts_path(@post), :id => "next_button", :'data-id' => @post.id %>
