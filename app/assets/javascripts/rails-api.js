@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     getTimeDifference();
     clickNextPost();
-    getComments();
+    // getComments();
 
 });
 
@@ -118,20 +118,21 @@ var allUsers = [];
   }
 
   //////////////////////////////////////////////////////
-  function getComments() {
-
-      var postId = $("#next_button").attr("data-id")
-
-      $.ajax({
-        method: "GET",
-        url: `/posts/${postId}`,
-        dataType: "json"
-      }).success(function(data) {
-        console.log(data["comments"])
-      })
-
-    // $.get(`/posts/${postId}.json`, function(data) {
-    //   console.log(data["comments"]);
-    // })
-
-  }
+  // function getComments() {
+  //
+  //     var postId = $("#next_button").attr("data-id")
+  //
+  //     $.ajax({
+  //       // method: "GET",
+  //       // url: `/posts/${postId}`,
+  //       url: '/comments',
+  //       dataType: "script"
+  //     })
+  //       // console.log(data["comments"])
+  //
+  //
+  //   // $.get(`/posts/${postId}.json`, function(data) {
+  //   //   console.log(data["comments"]);
+  //   // })
+  //
+  // }

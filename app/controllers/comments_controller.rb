@@ -4,17 +4,22 @@ before_action :authorize, :set_comment
   def index
 
     if params[:post_id]
-      @post = Post.find_by(id: params[:post_id])
-      @comments = @post.comments
+        @post = Post.find_by(id: params[:post_id])
+        @comments = @post.comments
 
-    else
-      @comments = Comment.all
-    end
+      else
+        @comments = Comment.all
+      end
+      
   end
 
   def show
     @comment = Comment.find(params[:id])
-    
+    # respond_to do |format|
+    #   format.html { render :show }
+    #   format.js { render :show.js }
+    # end
+
   end
   def new
     @comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
