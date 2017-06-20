@@ -17,7 +17,7 @@ before_action :authorize, :set_post
     respond_to do |format|
       format.html { render :show}
       format.json { render json: @post}
-      # format.js { render :index.js}
+      # format.js { render :show.js}
     end
 
   end

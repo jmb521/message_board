@@ -1,26 +1,22 @@
 class CommentsController < ApplicationController
-before_action :authorize, :set_comment
+before_action :authorize, :set_comment, :set_post
 
   def index
-
-    if params[:post_id]
-        @post = Post.find_by(id: params[:post_id])
-        @comments = @post.comments
-
-      else
-        @comments = Comment.all
+    #
+    # if params[:post_id]
+    #     @post = Post.find_by(id: params[:post_id])
+    #     @comments = @post.comments
+    #
+    #   else
+        # @comments = Comment.all
+      # end
+      @comments = @post.comments
+      respond_to do |format|
+        format.html {render 'index'}
+        format.js { render 'index.js' }
       end
-      
   end
 
-  def show
-    @comment = Comment.find(params[:id])
-    # respond_to do |format|
-    #   format.html { render :show }
-    #   format.js { render :show.js }
-    # end
-
-  end
   def new
     @comment = Comment.new(post_id: params[:post_id], user_id: current_user.id)
 
@@ -40,6 +36,7 @@ before_action :authorize, :set_comment
   end
 
   def edit
+
   end
 
   def update
@@ -56,6 +53,9 @@ before_action :authorize, :set_comment
 
   def comment_params
     params.require(:comment).permit(:user_id, :post_id, :content)
+  end
+  def set_post
+    @post = Post.find_by(:id => params[:post_id])
   end
   def set_comment
     @comment = Comment.find_by(id: params[:id])
