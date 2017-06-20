@@ -1,6 +1,9 @@
 
 
-$(function(){
+// $(document).on('ready page:load', function(event) {
+$(document).ready(function() {
+
+
     getTimeDifference();
     clickNextPost();
     getComments();
@@ -121,16 +124,16 @@ var allUsers = [];
   //////////////////////////////////////////////////////
   function getComments() {
 
-    var postId = $("div.comment").attr("data-id")
-    $('a.load_comments').on("click", function(e) {
+    var postId = $("div.comment").attr("data-id");
+    // $('a.load_comments').on("click", function(e) {
     // $("div.comment").load(function() {
       $.ajax({
         // method: "GET",
-        // url: `/posts/${postId}/comments`,
-        url: this.href,
+        url: `/posts/${postId}/comments`,
+        // url: this.href,
         dataType: 'script'
       });
-      e.preventDefault();
-    });
+      // e.preventDefault();
+    // });
     // })
   }

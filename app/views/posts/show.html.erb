@@ -7,7 +7,7 @@ Comments:
 <div class="comment" data-id="<%= @post.id %>">
   <%= render partial: "posts/comment_content", post: @post%>
   <div class="each_comment">
-<%= link_to "Load Comments", post_comments_path(@post), :class => 'load_comments' %>
+<%= link_to "Load Comments", post_comments_path(@post), :class => 'load_comments'%>
   </div>
 <%# @post.comments.reverse_each do |comment| %>
 

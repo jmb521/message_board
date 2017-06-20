@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= jquery.turbolinks
+
 //= require rails-api
 //= require_tree .
