@@ -2,11 +2,10 @@
 
 // $(document).on('ready page:load', function(event) {
 $(document).ready(function() {
-
-
     getTimeDifference();
     clickNextPost();
     getComments();
+    createComments();
 
 });
 
@@ -140,8 +139,19 @@ var allUsers = [];
 
   //////////////////////////////////////////////////////////////
   function createComments() {
-    $(".create_comments").on("submit", function(event) {
+    $("form.edit_post").on("click", function(event) {
+      event.preventDefault();
       
-        event.preventDefault();
+
+        // $.ajax({
+        //   method: "post",
+        //   url: this.action,
+        //   type: ($("input[name='_method']").val() || this.method),
+        //   data: $(this).serialize
+        //
+        // }).success(function(response) {
+        //   console.log(response);
+        // })
+
     })
   }
