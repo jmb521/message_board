@@ -139,4 +139,9 @@ var allUsers = [];
   }
 
   //////////////////////////////////////////////////////////////
-  
+  function createComments() {
+    $(".create_comments").on("submit", function(event) {
+      
+        event.preventDefault();
+    })
+  }

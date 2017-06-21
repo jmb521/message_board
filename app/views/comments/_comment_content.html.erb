@@ -9,5 +9,5 @@
 
   <% end %>
 
-<%= f.submit "Create Comment" %>
+<%= f.submit "Create Comment", :'data-id'=> @post.id, :class => "create_comments"  %>
 <% end %>
