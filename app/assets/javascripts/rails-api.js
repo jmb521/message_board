@@ -5,7 +5,7 @@ $(document).ready(function() {
     getTimeDifference();
     clickNextPost();
     getComments();
-    createComments();
+    // createComments();
 
 });
 
@@ -123,11 +123,11 @@ var allUsers = [];
   //////////////////////////////////////////////////////
   function getComments() {
 
-    var postId = $("div.comment").attr("data-id");
+    var postId = $("h1#content").attr("data-id");
     // $('a.load_comments').on("click", function(e) {
     // $("div.comment").load(function() {
       $.ajax({
-        // method: "GET",
+        method: "GET",
         url: `/posts/${postId}/comments`,
         // url: this.href,
         dataType: 'script'
@@ -138,20 +138,22 @@ var allUsers = [];
   }
 
   //////////////////////////////////////////////////////////////
-  function createComments() {
-    $("form.edit_post").on("click", function(event) {
-      event.preventDefault();
-      
-
-        // $.ajax({
-        //   method: "post",
-        //   url: this.action,
-        //   type: ($("input[name='_method']").val() || this.method),
-        //   data: $(this).serialize
-        //
-        // }).success(function(response) {
-        //   console.log(response);
-        // })
-
-    })
-  }
+  // function createComments() {
+  //   $("form.edit_post").on("click", function(event) {
+  //     console.log("this action: " + this.action)
+  //
+  //       $.ajax({
+  //         method: "POST",
+  //         url: this.action,
+  //         // type: ($("input[name]").val() || this.method),
+  //         data: $(this).serialize
+  //
+  //       }).success(function(response) {
+  //         console.log(response);
+  //       }).error(function(response) {
+  //         console.log("Houston, we have a problem!");
+  //       });
+  //
+  //       event.preventDefault();
+  //   })
+  // }

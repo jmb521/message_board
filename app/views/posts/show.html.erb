@@ -1,11 +1,11 @@
-<h1 id="content"><%= @post.content %></h1>
+<h1 id="content" data-id="<%= @post.id %>"><%= @post.content %></h1>
 
 
 <br />
 Comments:
 <br />
-<div class="comment" data-id="<%= @post.id %>">
-  <%= render partial: "comments/comment_content", post: @post%>
+<div class="comment">
+
   <div class="each_comment">
 
   </div>
