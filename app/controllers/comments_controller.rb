@@ -19,12 +19,12 @@ before_action :authorize, :set_post, :set_comment
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
 
-    # if @comment.save
-    #   redirect_to post_path(@comment.post_id)
-    #
-    # else
-    #   redirect_to posts_path, notice: "Your comment couldn't be saved"
-    # end
+    if @comment.save
+      redirect_to post_path(@comment.post_id)
+
+    else
+      redirect_to posts_path, notice: "Your comment couldn't be saved"
+    end
   end
 
   def edit
