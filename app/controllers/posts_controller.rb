@@ -14,7 +14,8 @@ before_action :authorize, :set_post
 
   def show
     @post = Post.find(params[:id])
-    @comment = @post.comments.build
+    @comment = Comment.new
+    
     @comments = @post.comments
     respond_to do |format|
       format.html { render :show}

@@ -141,20 +141,20 @@ var allUsers = [];
   function createComments() {
     $("form.new_comment").on("submit", function(event) {
 
-        $.ajax({
-
-          url: this.action,
-          type: ($("input[name]").val() || this.method),
-          data: $(this).serialize,
-          success: function(response){
-            console.log("response: " + response);
+      console.log("This is a test")
+        // $.ajax({
+          // url: this.action,
+          // type: ($("input[name]").val() || this.method),
+          // data: $(this).serialize,
+          // success: function(response){
+          //   console.log("response: " + response);
 //         $("#comment_content").val("");
-            $("form.edit_post").val("");
-            $(".each_comment").append("<p>" + response + "</p>");
+            // $("form.edit_post").val("");
+            // $(".each_comment").append("<p>" + response + "</p>");
 //         var $ol = $("div.comments ol")
 //         $ol.append(response);
-          }
-        })
+          // }
+        // })
 
         event.preventDefault();
     })

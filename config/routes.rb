@@ -16,7 +16,7 @@ end
   end
   resources :addresses, only: [:show, :index, :new, :edit, :create, :update]
   resources :posts do
-    resources :comments, only: [:show, :index, :new, :edit]
+    resources :comments
   end
 
   get '/signup' => "users#new"
