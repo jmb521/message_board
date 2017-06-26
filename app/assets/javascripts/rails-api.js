@@ -138,22 +138,24 @@ var allUsers = [];
   }
 
   //////////////////////////////////////////////////////////////
-  // function createComments() {
-  //   $("form.edit_post").on("click", function(event) {
-  //     console.log("this action: " + this.action)
-  //
-  //       $.ajax({
-  //         method: "POST",
-  //         url: this.action,
-  //         // type: ($("input[name]").val() || this.method),
-  //         data: $(this).serialize
-  //
-  //       }).success(function(response) {
-  //         console.log(response);
-  //       }).error(function(response) {
-  //         console.log("Houston, we have a problem!");
-  //       });
-  //
-  //       event.preventDefault();
-  //   })
-  // }
+  function createComments() {
+    $("form.new_comment").on("submit", function(event) {
+
+        $.ajax({
+
+          url: this.action,
+          type: ($("input[name]").val() || this.method),
+          data: $(this).serialize,
+          success: function(response){
+            console.log("response: " + response);
+//         $("#comment_content").val("");
+            $("form.edit_post").val("");
+            $(".each_comment").append("<p>" + response + "</p>");
+//         var $ol = $("div.comments ol")
+//         $ol.append(response);
+          }
+        })
+
+        event.preventDefault();
+    })
+  }

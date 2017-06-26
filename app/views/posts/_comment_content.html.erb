@@ -1,0 +1,10 @@
+
+<%= form_for @comment, :url => post_comments_path(@post) do |f| %>
+
+  <%= f.text_field :content %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+
+
+<%= f.submit "Create Comment", :'data-id'=> @post.id %>
+<% end %>
