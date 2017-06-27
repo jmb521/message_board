@@ -5,7 +5,7 @@ $(document).ready(function() {
     getTimeDifference();
     clickNextPost();
     getComments();
-    // createComments();
+    createComments();
 
 });
 
@@ -139,23 +139,22 @@ var allUsers = [];
 
   //////////////////////////////////////////////////////////////
   function createComments() {
-    $("form.new_comment").on("submit", function(event) {
+    $("#new_comment").on("click", function(event) {
 
-      console.log("This is a test")
-        // $.ajax({
-          // url: this.action,
-          // type: ($("input[name]").val() || this.method),
-          // data: $(this).serialize,
-          // success: function(response){
-          //   console.log("response: " + response);
-//         $("#comment_content").val("");
-            // $("form.edit_post").val("");
-            // $(".each_comment").append("<p>" + response + "</p>");
-//         var $ol = $("div.comments ol")
-//         $ol.append(response);
-          // }
-        // })
+      $.ajax({
+           type: ($("input[name='_method']").val() || this.method),
+           url: this.action,
+           data: $(this).serialize(),
+           success: function(response){
+             console.log("response: " + response);
+             $("#comment_content").val("");
+     
 
-        event.preventDefault();
+           }
+
+         });
+
+         event.preventDefault();
+
     })
   }

@@ -20,7 +20,7 @@ before_action :authorize, :set_post, :set_comment
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to post_path(@comment.post_id)
+      render 'create.js'
 
     else
       redirect_to posts_path, notice: "Your comment couldn't be saved"
