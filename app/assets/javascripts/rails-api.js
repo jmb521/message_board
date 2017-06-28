@@ -25,6 +25,12 @@ var allUsers = [];
     this.username = username;
   }
 
+  function Comment(id, content, post_id) {
+    this.id = id;
+    this.content = content;
+    this.post_id = post_id;
+  }
+
   function getTimeDifference() {
     var activeUserIds = [];
     $.ajax({
@@ -137,24 +143,26 @@ var allUsers = [];
     // })
   }
 
+  ///////////////////////////////////////////////////////////////
+  Comment.prototype.commentTemplate = function() {
+
+  }
+
   //////////////////////////////////////////////////////////////
   function createComments() {
-    $("#new_comment").on("click", function(event) {
+    $("form#new_comment").on("submit", function(event) {
 
-      $.ajax({
+
+            $.ajax({
            type: ($("input[name='_method']").val() || this.method),
            url: this.action,
-           data: $(this).serialize(),
-           success: function(response){
-             console.log("response: " + response);
-             $("#comment_content").val("");
-     
-
-           }
-
-         });
-
-         event.preventDefault();
-
-    })
-  }
+           data: $.parseJSON(this),
+           dataType: 'json',
+           success: function(data) {
+           $(".each_comment").text(data);
+           $("form#new_comment").unbind("submit");
+         }
+       })
+      event.preventDefault();
+  })
+}

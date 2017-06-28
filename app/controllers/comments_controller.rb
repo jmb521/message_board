@@ -18,13 +18,13 @@ before_action :authorize, :set_post, :set_comment
   def create
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
-
     if @comment.save
-      render 'create.js'
+      render json: @post
 
     else
       redirect_to posts_path, notice: "Your comment couldn't be saved"
     end
+
   end
 
   def edit
