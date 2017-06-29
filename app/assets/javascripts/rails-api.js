@@ -149,18 +149,16 @@ var allUsers = [];
   }
 
   //////////////////////////////////////////////////////////////
-  function createComments() {
+function createComments() {
     $("form#new_comment").on("submit", function(event) {
-
 
             $.ajax({
            type: ($("input[name='_method']").val() || this.method),
            url: this.action,
-           data: $.parseJSON(this),
+           data: $(this).serialize(),
            dataType: 'json',
            success: function(data) {
-           $(".each_comment").text(data);
-           $("form#new_comment").unbind("submit");
+           console.log(data)
          }
        })
       event.preventDefault();
