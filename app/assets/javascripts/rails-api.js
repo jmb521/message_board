@@ -7,6 +7,9 @@ $(document).ready(function() {
     getComments();
     createComments();
 
+
+    Comment.templateSource = $(".each_comment").html
+    Comment.template = Handlebars.compile(Comment.templateSource);
 });
 
 var allPosts = []; //a way to store the newly created post objects
@@ -25,11 +28,14 @@ var allUsers = [];
     this.username = username;
   }
 
-  function Comment(id, content, post_id) {
-    this.id = id;
-    this.content = content;
-    this.post_id = post_id;
-  }
+  function Comment(comment_attributes) {
+    this.id = comment_attributes.id;
+    this.content = comment_attributes.content;
+    this.user_id = comment_attributes.user_id;
+    this.post_id = comment_attributes.post.id;
+
+}
+
 
   function getTimeDifference() {
     var activeUserIds = [];
@@ -145,8 +151,9 @@ var allUsers = [];
 
   ///////////////////////////////////////////////////////////////
   Comment.prototype.commentTemplate = function() {
-
+    return Comment.template(this);
   }
+
 
   //////////////////////////////////////////////////////////////
 function createComments() {
@@ -158,7 +165,9 @@ function createComments() {
            data: $(this).serialize(),
            dataType: 'json',
            success: function(data) {
-           console.log(data)
+           var comment = new Comment(data);
+           var commentT = comment.commentTemplate(comment);
+           $(".each_comment").append(commentT);
          }
        })
       event.preventDefault();
