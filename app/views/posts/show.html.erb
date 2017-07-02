@@ -27,7 +27,7 @@ Comments:
     <span class="username"><%= link_to @current_user.username, profile_path(@current_user) %></span>   {{content}}
 
     <a data-method="get" href="/comments/{{id}}/edit">Edit</a> | <a rel="nofollow" data-method="delete" href="/comments/{{id}}">Delete</a>
-    <%= link_to "Edit", edit_comment_path(@post) %>
+    
     <br>
 
   </p>
