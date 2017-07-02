@@ -31,11 +31,6 @@ var allUsers = [];
     this.content = comment_attributes.content;
     this.userid = comment_attributes.post.user_id;
     this.postid = comment_attributes.post.id;
-    // this.post.content = comment_attributes.post.content;
-    // this.post.created_at = comment_attributes.post.created_at;
-    // this.post.updated_at = comment_attributes.post.updated_at;
-
-
 }
 
 
