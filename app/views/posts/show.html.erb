@@ -6,22 +6,29 @@ Comments:
 <br />
 <div class="comment">
 <%= render partial: "posts/comment_content", locals: {post: @post} %>
-  <div class="each_comment">
-    <script id="comment-template" type="text/x-handlebars-template">
-      <p>
-        <!-- <img src="" alt="" width="100" height="100/"> -->
-        <%= image_tag @current_user.profile.photo_url, :height => "100", :width => "100" %>
-        <a href="/profiles/" + {{"user_id"}}><span class="username"></span></a>{{content}}
-
-  <a data-method="get" href="/comments/{{id}}/edit">Edit</a> | <a rel="nofollow" data-method="delete" href="/comments/{{id}}">Delete</a>
-
-  <br>
-
-</p>
-    </script>
+    <div class="each_comment">
   </div>
-<%# @post.comments.reverse_each do |comment| %>
+
 
 
 </div>
 <%= link_to "Next Post", posts_path(@post), :id => "next_button", :'data-id' => @post.id %>
+
+
+
+
+
+
+
+<script id="comment-template" type="text/x-handlebars-template">
+  <p id="comment-template">
+    <!-- <img src="" alt="" width="100" height="100/"> -->
+    <%= image_tag @current_user.profile.photo_url, :height => "100", :width => "100" %>
+    <span class="username"><%= link_to @current_user.username, profile_path(@current_user) %></span>   {{content}}
+
+    <a data-method="get" href="/comments/{{id}}/edit">Edit</a> | <a rel="nofollow" data-method="delete" href="/comments/{{id}}">Delete</a>
+    <%= link_to "Edit", edit_comment_path(@post) %>
+    <br>
+
+  </p>
+</script>

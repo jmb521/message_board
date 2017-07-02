@@ -6,5 +6,5 @@
 
 
 
-<%= f.submit "Create Comment", :'data-id'=> @post.id, :id => "submit_button" %>
+<%= f.submit "Create Comment", data:{ disable_with: false }, :'data-id'=> @post.id, :id => "submit_button" %>
 <% end %>

@@ -8,9 +8,7 @@ $(document).ready(function() {
     createComments();
 
 
-    Comment.templateSource = $(".each_comment").html
-    Comment.template = Handlebars.compile(Comment.templateSource);
-});
+    });
 
 var allPosts = []; //a way to store the newly created post objects
 var allUsers = [];
@@ -31,8 +29,12 @@ var allUsers = [];
   function Comment(comment_attributes) {
     this.id = comment_attributes.id;
     this.content = comment_attributes.content;
-    this.user_id = comment_attributes.user_id;
-    this.post_id = comment_attributes.post.id;
+    this.userid = comment_attributes.post.user_id;
+    this.postid = comment_attributes.post.id;
+    // this.post.content = comment_attributes.post.content;
+    // this.post.created_at = comment_attributes.post.created_at;
+    // this.post.updated_at = comment_attributes.post.updated_at;
+
 
 }
 
@@ -148,7 +150,12 @@ var allUsers = [];
     // });
     // })
   }
+  $(function() {
+    Comment.templateSource = $("#comment-template").html();
+    // console.log("comment-template: ", $("#each_comment").html);
+    Comment.template = Handlebars.compile(Comment.templateSource);
 
+  })
   ///////////////////////////////////////////////////////////////
   Comment.prototype.commentTemplate = function() {
     return Comment.template(this);
@@ -158,18 +165,21 @@ var allUsers = [];
   //////////////////////////////////////////////////////////////
 function createComments() {
     $("form#new_comment").on("submit", function(event) {
-
-            $.ajax({
+        $.ajax({
            type: ($("input[name='_method']").val() || this.method),
            url: this.action,
            data: $(this).serialize(),
            dataType: 'json',
            success: function(data) {
-           var comment = new Comment(data);
-           var commentT = comment.commentTemplate(comment);
-           $(".each_comment").append(commentT);
+           var new_comment = new Comment(data);
+           $("input#comment_content").val(""); //clears the form input so that you can add another comment.
+
+           var commentT = new_comment.commentTemplate();
+
+           $(".each_comment").append(commentT); //appends the template to the each_comment div.
          }
        })
+
       event.preventDefault();
   })
 }
