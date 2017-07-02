@@ -6,9 +6,9 @@ $(document).ready(function() {
     clickNextPost();
     getComments();
     createComments();
-    Comment.templateSource = $("#comment-template").html();
+    Comment.templateSource = $("#comment-template").html();// gets the template data from the id from the script tag on the show page.
     // console.log("comment-template: ", $("#each_comment").html);
-    Comment.template = Handlebars.compile(Comment.templateSource);
+    Comment.template = Handlebars.compile(Comment.templateSource); // compiles the template into handlebars data to be outputted to the dom.
 
     });
 
@@ -150,14 +150,14 @@ var allUsers = [];
 
   ///////////////////////////////////////////////////////////////
   Comment.prototype.commentTemplate = function() {
-    return Comment.template(this);
+    return Comment.template(this); //creates a prototype function that returns the comment template.
   }
   //////////////////////////////////////////////////////////////
   Comment.response = function(data) {
     var new_comment = new Comment(data);
     $("input#comment_content").val(""); //clears the form input so that you can add another comment.
 
-    var commentT = new_comment.commentTemplate();
+    var commentT = new_comment.commentTemplate(); //uses the commentTemplate prototype function to load the comment data in the template
 
     $(".each_comment").append(commentT); //appends the template to the each_comment div.
 
