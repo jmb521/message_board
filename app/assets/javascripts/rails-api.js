@@ -155,7 +155,16 @@ var allUsers = [];
   Comment.prototype.commentTemplate = function() {
     return Comment.template(this);
   }
+  //////////////////////////////////////////////////////////////
+  Comment.response = function(data) {
+    var new_comment = new Comment(data);
+    $("input#comment_content").val(""); //clears the form input so that you can add another comment.
 
+    var commentT = new_comment.commentTemplate();
+
+    $(".each_comment").append(commentT); //appends the template to the each_comment div.
+
+  }
 
   //////////////////////////////////////////////////////////////
 function createComments() {
@@ -166,12 +175,7 @@ function createComments() {
            data: $(this).serialize(),
            dataType: 'json',
            success: function(data) {
-           var new_comment = new Comment(data);
-           $("input#comment_content").val(""); //clears the form input so that you can add another comment.
-
-           var commentT = new_comment.commentTemplate();
-
-           $(".each_comment").append(commentT); //appends the template to the each_comment div.
+             Comment.response(data);
          }
        })
 
