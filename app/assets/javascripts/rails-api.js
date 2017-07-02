@@ -6,7 +6,9 @@ $(document).ready(function() {
     clickNextPost();
     getComments();
     createComments();
-
+    Comment.templateSource = $("#comment-template").html();
+    // console.log("comment-template: ", $("#each_comment").html);
+    Comment.template = Handlebars.compile(Comment.templateSource);
 
     });
 
@@ -145,12 +147,7 @@ var allUsers = [];
     // });
     // })
   }
-  $(function() {
-    Comment.templateSource = $("#comment-template").html();
-    // console.log("comment-template: ", $("#each_comment").html);
-    Comment.template = Handlebars.compile(Comment.templateSource);
 
-  })
   ///////////////////////////////////////////////////////////////
   Comment.prototype.commentTemplate = function() {
     return Comment.template(this);
