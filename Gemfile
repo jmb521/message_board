@@ -38,6 +38,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'active_model_serializers'
 gem 'jquery-turbolinks'
+gem 'dotenv-rails'
 
 
 group :development, :test do
