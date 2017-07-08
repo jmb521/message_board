@@ -26,8 +26,8 @@ Comments:
     <%= image_tag @current_user.profile.photo_url, :height => "100", :width => "100" %>
     <span class="username"><%= link_to @current_user.username, profile_path(@current_user) %></span>   {{content}}
 
-    <a data-method="get" href="/comments/{{id}}/edit">Edit</a> | <a rel="nofollow" data-method="delete" href="/comments/{{id}}">Delete</a>
-    
+    <a data-method="get" href="/comments/{{id}}/edit">Edit</a> | <button id="delete_comment" href="/comments/{{id}}">Delete</button>
+
     <br>
 
   </p>

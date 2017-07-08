@@ -10,7 +10,7 @@ $(document).ready(function() {
     // console.log("comment-template: ", $("#each_comment").html);
     Comment.template = Handlebars.compile(Comment.templateSource); // compiles the template into handlebars data to be outputted to the dom.
 
-    });
+});
 
 var allPosts = []; //a way to store the newly created post objects
 var allUsers = [];
@@ -116,14 +116,33 @@ var allUsers = [];
 
   function getNextPost(id) {
     var nextId;
+    //find the index that id belongs to. Get the next value from the array based on the index of the current id.
     id = parseInt(id);
-    if(id <=allPosts.length-1) {
-
-      nextId = id + 1;
-
-    } else {
-      nextId = 1;
+    var currentIndex;
+    console.log(allPosts)
+    for(var i= 0; i<allPosts.length; i++) {
+      if(allPosts[i].id === id) {
+        currentIndex = i;
+      }
     }
+    console.log("currentIndex ", currentIndex)
+    if(currentIndex < 0 || currentIndex == allPosts.length-1) {
+      nextId = allPosts[0].id
+    } else {
+
+        nextId = allPosts[currentIndex+1].id;
+        console.log("nextId if currentIndex is greater than 0 and less than the length of array: ", nextId)
+
+
+    }
+    // if(id <=allPosts.length-1) {
+    //
+    //   nextId = id + 1;
+    //
+    // } else {
+    //   nextId = allPosts[0].id
+    //
+    // }
     console.log("nextId: " + nextId);
     $.get("/posts/" + nextId, function(data) {
         $("html").html(data);
@@ -141,8 +160,12 @@ var allUsers = [];
         method: "GET",
         url: `/posts/${postId}/comments`,
         // url: this.href,
-        dataType: 'script'
-      });
+        dataType: 'script',
+
+      }).then(function() {
+        bindCommentDeleteEventListeners()
+
+      })
       // e.preventDefault();
     // });
     // })
@@ -163,6 +186,14 @@ var allUsers = [];
 
   }
 
+  Comment.prototype.renderComment = function (element) {
+    element.append(`
+      <div>
+        <h1>${this.content}</h1>
+      </div>
+    `)
+  }
+
   //////////////////////////////////////////////////////////////
 function createComments() {
     $("form#new_comment").on("submit", function(event) {
@@ -177,5 +208,14 @@ function createComments() {
        })
 
       event.preventDefault();
+  })
+}
+
+function bindCommentDeleteEventListeners() {
+  var stuff = $("#delete_comment");
+  console.log(stuff)
+  $("#delete_comment").on("click", function(event) {
+    event.preventDefault();
+    console.log(event.target);
   })
 }
