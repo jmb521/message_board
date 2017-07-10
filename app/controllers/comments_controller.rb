@@ -19,7 +19,7 @@ before_action :authorize, :set_post, :set_comment
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      
+
       render json: @comment
 
     else
