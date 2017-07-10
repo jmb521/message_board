@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= jquery.turbolinks
+
 //= require rails-api
 //= require handlebars.js
 //= require_tree .

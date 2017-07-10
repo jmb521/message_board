@@ -13,23 +13,23 @@
 ActiveRecord::Schema.define(version: 20170227010848) do
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
-    t.integer  "user_id"
-    t.integer  "profile_id"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.integer "user_id"
+    t.integer "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "content"
+    t.string "content"
   end
 
   create_table "manage_users", force: :cascade do |t|
@@ -38,26 +38,26 @@ ActiveRecord::Schema.define(version: 20170227010848) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "content"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer "user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "photo_url"
+    t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.integer  "role",            default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "email"
+    t.string "username"
+    t.string "password_digest"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
   end
 
 end
