@@ -19,7 +19,7 @@ before_action :authorize, :set_post, :set_comment
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      
+
       render json: @comment
 
     else
@@ -39,6 +39,7 @@ before_action :authorize, :set_post, :set_comment
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to post_path(@comment.post_id)
   end

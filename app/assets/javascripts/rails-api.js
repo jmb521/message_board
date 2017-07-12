@@ -1,7 +1,7 @@
 
 
-// $(document).on('ready page:load', function(event) {
-$(document).ready(function() {
+  $(function(){
+// $(document).ready(function() {
     getTimeDifference();
     clickNextPost();
     getComments();
@@ -9,7 +9,7 @@ $(document).ready(function() {
     Comment.templateSource = $("#comment-template").html();// gets the template data from the id from the script tag on the show page.
     // console.log("comment-template: ", $("#each_comment").html);
     Comment.template = Handlebars.compile(Comment.templateSource); // compiles the template into handlebars data to be outputted to the dom.
-
+    bindCommentDeleteEventListeners();
 });
 
 var allPosts = []; //a way to store the newly created post objects
@@ -212,10 +212,31 @@ function createComments() {
 }
 
 function bindCommentDeleteEventListeners() {
-  var stuff = $("#delete_comment");
-  console.log(stuff)
-  $("#delete_comment").on("click", function(event) {
+
+  $("a#delete_comment").on("click", function(event) {
+
     event.preventDefault();
-    console.log(event.target);
+      event.stopPropagation();
+
+      var comment_id = $(this).data("id");
+
+      console.log("comment_id", comment_id);
+      
+    $.ajax({
+      method: 'DELETE',
+      // dataType: 'JSON',
+      url: this.href
+    }).success(function() {
+      var found = $("div.each_comment").find("p");
+      console.log(found[0]["dataset"]["id"]);
+      for(var i=0; i<found.length; i++) {
+        console.log("found[i]", typeof found[i]["dataset"]["id"]);
+        if(parseInt(found[i]["dataset"]["id"]) === comment_id) {
+          $(found[i]).remove();
+        }
+      }
+
+    })
+
   })
 }
