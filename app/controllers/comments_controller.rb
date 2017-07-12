@@ -41,7 +41,11 @@ before_action :authorize, :set_post, :set_comment
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@comment.post_id)
+    respond_to do |format|
+      format.json {render json: @comment}
+      format.html {render post_path(@comment)}
+    end
+    # redirect_to post_path(@comment.post_id)
   end
   private
 

@@ -221,10 +221,10 @@ function bindCommentDeleteEventListeners() {
       var comment_id = $(this).data("id");
 
       console.log("comment_id", comment_id);
-      
+
     $.ajax({
       method: 'DELETE',
-      // dataType: 'JSON',
+      dataType: 'JSON',
       url: this.href
     }).success(function() {
       var found = $("div.each_comment").find("p");
@@ -235,7 +235,7 @@ function bindCommentDeleteEventListeners() {
           $(found[i]).remove();
         }
       }
-
+      return false;
     })
 
   })
