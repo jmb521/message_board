@@ -16,9 +16,49 @@ Get to know your moderators: <%= link_to "Moderators", user_status_users_path %>
   by: <%= post.user.username %> on: <%= post.created_at.strftime("%A, %B, %d") %>
 
   <% if post.user.id == current_user.id || current_user.admin? || current_user.moderator?  %>
-    <%= link_to "Edit Post", edit_post_path(post) %>
+    <button id="edit_post" data-id="<%= post.id %>" data-user="<%= post.user.id %>">Edit Post</button>
     <%= link_to "Delete", post, :method => 'delete' %>
     <% end %>
   <hr />
 
 <% end %>
+
+<script>
+  $(function() {
+
+    function bindEditPostEventListeners() {
+      $("button#edit_post").on("click", function(event) {
+        event.preventDefault();
+        var postId = $(this).data("id");
+        var userId = $(this).data("user")
+        var postName = `a[data-id="${postId}"]`;
+        console.log($(postName).text());
+        $(postName).replaceWith(`<input type='text' value="${$(postName).html()}" id="editPostInput" />`);
+
+        $("input#editPostInput").on("keydown", function(event) {
+          var updatedPost = this.value
+
+          if(event.key =="Enter") {
+            $.ajax({
+              method: 'PUT',
+              dataType: 'JSON',
+              url:`/posts/${postId}`,
+              data: {content: updatedPost, user_id: userId}
+            }).done(function(response) {
+
+                $("input#editPostInput").replaceWith(`<a data-id="${response.id}" class="posts" href="/posts/${response.id}" >` + response.content + "</a>")
+
+            })
+
+          }
+        })
+
+      })
+
+    }
+
+
+
+    bindEditPostEventListeners()
+  })
+</script>

@@ -19,7 +19,7 @@ before_action :authorize, :set_post
     @comments = @post.comments
     respond_to do |format|
       format.html { render :show}
-      format.json { render json: @comment}
+      format.json { render json: @post}
     end
 
   end
@@ -44,7 +44,11 @@ before_action :authorize, :set_post
 
   def update
     @post.update(post_params)
-    redirect_to post_path(@post)
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @post}
+    end
+
   end
 
   def destroy
@@ -54,7 +58,7 @@ before_action :authorize, :set_post
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :comment_attributes => [:content, :user_id])
+    params.permit(:content, :user_id, :comment_attributes => [:content, :user_id])
   end
   def set_post
     @post = Post.find_by(id: params[:id])

@@ -2,6 +2,7 @@
   <%= f.label "New Post" %>
   <br />
   <%= f.text_area :content, :cols => '80', :rows => '5' %>
+  <%= f.hidden_field :user_id,  :value => @current_user.id %>
   <br />
   <br />
   <%= f.submit %>

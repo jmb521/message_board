@@ -1,6 +1,4 @@
-
-
-  $(function(){
+  $(document).on('ready', function(){
     getTimeDifference();
     clickNextPost();
     getComments();
