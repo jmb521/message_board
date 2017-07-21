@@ -40,10 +40,10 @@ Get to know your moderators: <%= link_to "Moderators", user_status_users_path %>
 
           if(event.key =="Enter") {
             $.ajax({
-              method: 'PUT',
+              method: 'POST',
               dataType: 'JSON',
               url:`/posts/${postId}`,
-              data: {content: updatedPost, user_id: userId}
+              data: {_method: "put", post:{content: updatedPost, user_id: userId}}
             }).done(function(response) {
 
                 $("input#editPostInput").replaceWith(`<a data-id="${response.id}" class="posts" href="/posts/${response.id}" >` + response.content + "</a>")

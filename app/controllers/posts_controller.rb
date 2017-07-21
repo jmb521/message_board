@@ -44,11 +44,7 @@ before_action :authorize, :set_post
 
   def update
     @post.update(post_params)
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @post}
-    end
-
+    redirect_to post_path(@post)
   end
 
   def destroy
@@ -58,7 +54,7 @@ before_action :authorize, :set_post
 
   private
   def post_params
-    params.permit(:content, :user_id, :comment_attributes => [:content, :user_id])
+    params.require(:post).permit(:title, :content, :user_id, :comment_attributes => [:content, :user_id])
   end
   def set_post
     @post = Post.find_by(id: params[:id])
