@@ -12,3 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//= require rails-api
+//= require handlebars.js
+//= require_tree .

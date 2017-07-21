@@ -16,17 +16,18 @@ before_action :authorize, :set_post, :set_comment
 
 
   def create
-    @comment = @post.comments.build(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save
+     @comment = @post.comments.build(comment_params)
+     @comment.user_id = current_user.id
+     if @comment.save
 
-      render json: @comment
+       render json: @comment
 
-    else
-      redirect_to posts_path, notice: "Your comment couldn't be saved"
-    end
+     else
+       redirect_to posts_path, notice: "Your comment couldn't be saved"
+     end
 
-  end
+   end
+
 
   def edit
     @comment = Comment.find(params[:id])
@@ -57,5 +58,5 @@ before_action :authorize, :set_post, :set_comment
   end
   def set_comment
    @comment = Comment.find_by(id: params[:id])
- end
+  end
 end
